@@ -130,6 +130,15 @@ export default function DetailScreen({ navigation }) {
                     </View>
                 </View>
             </View>
+            <View style={headerStyles.headerView3}>
+                <View style={headerStyles.headerView3View}><Text>1. Hafta</Text></View>
+                <View style={headerStyles.headerView3View}><Text>1. Gün</Text></View>
+                <View style={headerStyles.headerView3View}><Text style={{ fontSize: 13 }}>Tüm Dersler</Text></View>
+                <View style={headerStyles.headerView3View}><Text style={{ fontSize: 11 }}>Bekleyen Görev: 0</Text></View>
+                <View style={headerStyles.headerView3View}><Text style={{ fontSize: 11 }}>Devam Eden Görev: 0</Text></View>
+                <View style={headerStyles.headerView3View}><Text style={{ fontSize: 10 }}>Tamamlanan Görev: 2</Text></View>
+
+            </View>
             <View style={contentStyles.contentView}>
                 <ScrollView horizontal={true}>
                     <View>
@@ -179,16 +188,30 @@ const styles = StyleSheet.create({
 });
 const headerStyles = StyleSheet.create({
     headerView1: {
-        height: "20%",
+        height: "15%",
         width: "100%",
         backgroundColor: "brown",
         flexDirection: "row"
     },
     headerView2: {
-        height: "20%",
+        height: "15%",
         width: "100%",
         backgroundColor: "brown",
         flexDirection: "row"
+    },
+    headerView3: {
+        height: "7%",
+        width: "100%",
+        backgroundColor: "brown",
+        flexDirection: "row"
+    },
+    headerView3View: {
+        borderRadius: 5,
+        margin: 5,
+        backgroundColor: "aqua",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
     },
     headerViewCells: {
         backgroundColor: "aqua",

@@ -56,12 +56,8 @@ export default function MainScreen({ navigation }) {
                     </Pressable>
                 </View>
                 <View style={contentStyle.contentView1}>
-                    <View style={contentStyle.contentViewCells} >
-                        <View style={contentStyle.contentViewCellsHeader}>
-                            <Text style={contentStyle.contentViewCellsHeaderText}>Seçenek 1</Text>
-                        </View>
-                    </View>
-                    <View style={contentStyle.contentViewCells}>
+
+                    <View style={contentStyle.contentViewCellsWidth} >
                         <View style={contentStyle.contentViewCellsHeader}>
                             <Text style={contentStyle.contentViewCellsHeaderText}>Seçenek 2</Text>
                         </View>
@@ -80,16 +76,12 @@ export default function MainScreen({ navigation }) {
                     </View>
                 </View>
                 <View style={contentStyle.contentView3}>
-                    <View style={contentStyle.contentViewCells} >
+                    <View style={contentStyle.contentViewCellsWidth} >
                         <View style={contentStyle.contentViewCellsHeader}>
                             <Text style={contentStyle.contentViewCellsHeaderText}>Seçenek 5</Text>
                         </View>
                     </View>
-                    <View style={contentStyle.contentViewCells}>
-                        <View style={contentStyle.contentViewCellsHeader}>
-                            <Text style={contentStyle.contentViewCellsHeaderText}>Seçenek 6 </Text>
-                        </View>
-                    </View>
+
                 </View>
                 <View style={footerStyle.footerView}>
                     <View style={footerStyle.footerViewView}></View>
@@ -131,7 +123,8 @@ const contentStyle = StyleSheet.create({
         backgroundColor: "brown",
         width: "100%",
         height: 200,
-        flexDirection: "row"
+        flexDirection: "row",
+        justifyContent: "flex-start"
     },
     contentView2: {
         backgroundColor: "brown",
@@ -143,7 +136,9 @@ const contentStyle = StyleSheet.create({
         backgroundColor: "brown",
         width: "100%",
         height: 200,
-        flexDirection: "row"
+        flexDirection: "row",
+        justifyContent: "flex-end"
+
     },
     contentViewCells: {
         backgroundColor: "cyan",
@@ -151,6 +146,13 @@ const contentStyle = StyleSheet.create({
         borderRadius: 7,
         margin: 10,
         flex: 1
+    },
+    contentViewCellsWidth: {
+        backgroundColor: "cyan",
+        height: 180,
+        borderRadius: 7,
+        margin: 10
+        , width: "45%"
     },
     contentViewCellsHeader: {
         backgroundColor: "deeppink",
