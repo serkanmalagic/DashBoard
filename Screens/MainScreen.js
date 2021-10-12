@@ -118,7 +118,7 @@ const headerStyle = StyleSheet.create({
         backgroundColor: "aqua",
         flex: 1,
         margin: 10,
-        borderRadius: 15
+        borderRadius: 7
     }
 });
 
@@ -148,15 +148,15 @@ const contentStyle = StyleSheet.create({
     contentViewCells: {
         backgroundColor: "cyan",
         height: 180,
-        borderRadius: 15,
+        borderRadius: 7,
         margin: 10,
         flex: 1
     },
     contentViewCellsHeader: {
         backgroundColor: "deeppink",
         height: "25%",
-        borderTopLeftRadius: 15,
-        borderTopRightRadius: 15,
+        borderTopLeftRadius: 7,
+        borderTopRightRadius: 7,
         alignItems: "center",
         justifyContent: "center"
     },

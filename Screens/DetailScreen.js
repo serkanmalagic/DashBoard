@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { useState } from 'react';
 import { NavigationContainer } from "@react-navigation/native";
+import { Table, Row, Rows } from 'react-native-table-component';
 
 const DATA = [
     {
@@ -46,6 +47,17 @@ const Item = ({ title }) => (
 
 export default function DetailScreen({ navigation }) {
 
+    const state = {
+        HeadTable: ['Head1', 'Head2', 'Head3', 'Head4', 'Head5', 'Head5'],
+        DataTable: [
+            ['1', '2', '3', '4', '5', '5'],
+            ['a', 'b', 'c', 'd', 'e', '5'],
+            ['1', '2', '3', '4', '5', '5'],
+            ['a', 'b', 'c', 'd', 'e', '5'],
+            ['1', '2', '3', '4', '5', '5']
+        ]
+    };
+
     const [selectedIndex, setSelectedIndex] = useState();
 
     const renderItem = ({ item }) => (
@@ -73,8 +85,6 @@ export default function DetailScreen({ navigation }) {
             ]
         );
 
-
-
     return (
         <View style={styles.container}>
             <View style={headerStyles.headerView1}>
@@ -94,7 +104,6 @@ export default function DetailScreen({ navigation }) {
                         <Text style={headerStyles.headerViewCellsHeaderText2}>133</Text>
                     </View>
                 </View>
-
             </View>
             <View style={headerStyles.headerView2}>
                 <View style={headerStyles.headerViewCells}>
@@ -115,13 +124,11 @@ export default function DetailScreen({ navigation }) {
                 </View>
             </View>
             <View style={contentStyles.contentView}>
-                <FlatList
-                    data={DATA}
-                    renderItem={renderItem}
-                    keyExtractor={item => item.id}
-                />
+                <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
+                    <Row data={state.HeadTable} style={styles.head} textStyle={styles.text} />
+                    <Rows data={state.DataTable} textStyle={styles.text} />
+                </Table>
             </View>
-
         </View >
     );
 };
@@ -140,6 +147,13 @@ const styles = StyleSheet.create({
         margin: 10,
         borderRadius: 15
     },
+    head: {
+        height: 40,
+        backgroundColor: '#f1f8ff'
+    },
+    text: {
+        margin: 6
+    }
 });
 const headerStyles = StyleSheet.create({
     headerView1: {
@@ -158,13 +172,13 @@ const headerStyles = StyleSheet.create({
         backgroundColor: "aqua",
         flex: 1,
         margin: 10,
-        borderRadius: 10
+        borderRadius: 7
     },
     headerViewCellsHeader: {
         backgroundColor: "lime",
         height: "25%",
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
+        borderTopLeftRadius: 7,
+        borderTopRightRadius: 7,
         alignItems: "center",
         justifyContent: "center"
     },
