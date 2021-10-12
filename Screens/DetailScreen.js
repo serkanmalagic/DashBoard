@@ -6,11 +6,12 @@ import {
     View,
     Alert,
     ScrollView,
-    FlatList
+    FlatList,
+    TouchableOpacity
 } from 'react-native';
 import { useState } from 'react';
 import { NavigationContainer } from "@react-navigation/native";
-import { Table, Row, Rows } from 'react-native-table-component';
+import { Table, TableWrapper, Row } from 'react-native-table-component';
 
 const DATA = [
     {
@@ -47,16 +48,24 @@ const Item = ({ title }) => (
 
 export default function DetailScreen({ navigation }) {
 
+
+
     const state = {
-        HeadTable: ['Head1', 'Head2', 'Head3', 'Head4', 'Head5', 'Head5'],
-        DataTable: [
-            ['1', '2', '3', '4', '5', '5'],
-            ['a', 'b', 'c', 'd', 'e', '5'],
-            ['1', '2', '3', '4', '5', '5'],
-            ['a', 'b', 'c', 'd', 'e', '5'],
-            ['1', '2', '3', '4', '5', '5']
+        tableHead: ['#', 'Ders', 'Kitap', 'Bölüm', 'Konu', 'İşlemler'],
+        widthArr: [120, 150, 120, 120, 150, 100],
+        dataTable: [
+            ['1 - Konu Testi', 'MATEMATİK', 'AYT MATEMATİK', '001 - MANTIK', '001 - Önermeler'],
+            ['2 - Konu Testi', 'MATEMATİK', 'AYT MATEMATİK', '001 - MANTIK', '002 - Veya, Ve, Ya Da Bağlaçlı Bileşik Önermeler'],
+            ['1 - Konu Testi', 'MATEMATİK', 'AYT MATEMATİK', '001 - MANTIK', '001 - Önermeler'],
+            ['a', 'b', 'c', 'd', 'e'],
+            ['1 - Konu Testi', 'MATEMATİK', 'AYT MATEMATİK', '001 - MANTIK', '001 - Önermeler'],
+            ['2 - Konu Testi', 'MATEMATİK', 'AYT MATEMATİK', '001 - MANTIK', '002 - Veya, Ve, Ya Da Bağlaçlı Bileşik Önermeler'],
+            ['1 - Konu Testi', 'MATEMATİK', 'AYT MATEMATİK', '001 - MANTIK', '001 - Önermeler'],
+            ['a', 'b', 'c', 'd', 'e'],
+            ['1 - Konu Testi', 'MATEMATİK', 'AYT MATEMATİK', '001 - MANTIK', '001 - Önermeler']
         ]
     };
+
 
     const [selectedIndex, setSelectedIndex] = useState();
 
@@ -64,26 +73,24 @@ export default function DetailScreen({ navigation }) {
         <Item title={item.title} />
     );
 
-    const createThreeButtonAlert = () =>
-        Alert.alert(
-            "Diğer İşlemler",
-            "",
-            [
-                {
-                    text: "Test Raporu",
-                    onPress: () => console.log("Ask me later pressed")
-                },
-                {
-                    text: "Cevap Anahtarı",
-                    onPress: () => console.log("Ask me later pressed")
-                },
-                {
-                    text: "Vazgeç",
-                    onPress: () => console.log("Cancel Pressed"),
-                    style: "cancel"
-                }
-            ]
-        );
+    const element = (data, index) => (
+        <TouchableOpacity onPress={() => this._alertIndex(index)}>
+            <View style={styles.btn}>
+                <Text style={styles.btnText}>button</Text>
+            </View>
+        </TouchableOpacity>
+    );
+
+    const tableData = [];
+
+    for (let i = 0; i < 15; i += 1) {
+        const rowData = [];
+        for (let j = 0; j < 15; j += 1) {
+            rowData.push(state.dataTable[i]);
+        }
+        tableData.push(rowData);
+    }
+
 
     return (
         <View style={styles.container}>
@@ -124,10 +131,28 @@ export default function DetailScreen({ navigation }) {
                 </View>
             </View>
             <View style={contentStyles.contentView}>
-                <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
-                    <Row data={state.HeadTable} style={styles.head} textStyle={styles.text} />
-                    <Rows data={state.DataTable} textStyle={styles.text} />
-                </Table>
+                <ScrollView horizontal={true}>
+                    <View>
+                        <Table borderStyle={{ borderWidth: 1, borderColor: '#C1C0B9' }}>
+                            <Row data={state.tableHead} widthArr={state.widthArr} style={styles.header} textStyle={styles.text} />
+                        </Table>
+                        <ScrollView style={styles.dataWrapper}>
+                            <Table borderStyle={{ borderWidth: 1, borderColor: '#C1C0B9' }}>
+                                {
+                                    tableData.map((rowData, index) => (
+                                        <Row
+                                            key={index}
+                                            data={rowData}
+                                            widthArr={state.widthArr}
+                                            style={[styles.row, index % 2 && { backgroundColor: '#F7F6E7' }]}
+                                            textStyle={styles.text}
+                                        />
+                                    ))
+                                }
+                            </Table>
+                        </ScrollView>
+                    </View>
+                </ScrollView>
             </View>
         </View >
     );
@@ -147,13 +172,10 @@ const styles = StyleSheet.create({
         margin: 10,
         borderRadius: 15
     },
-    head: {
-        height: 40,
-        backgroundColor: '#f1f8ff'
-    },
-    text: {
-        margin: 6
-    }
+    header: { height: 50, backgroundColor: '#537791' },
+    text: { textAlign: 'center', fontWeight: '100' },
+    dataWrapper: { marginTop: -1 },
+    row: { height: 40, backgroundColor: '#E7E6E1' }
 });
 const headerStyles = StyleSheet.create({
     headerView1: {
