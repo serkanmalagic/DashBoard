@@ -137,16 +137,15 @@ export default function DetailScreen({ navigation }) {
                 <View style={headerStyles.headerView3View}><Text style={{ fontSize: 11 }}>Bekleyen Görev: 0</Text></View>
                 <View style={headerStyles.headerView3View}><Text style={{ fontSize: 11 }}>Devam Eden Görev: 0</Text></View>
                 <View style={headerStyles.headerView3View}><Text style={{ fontSize: 10 }}>Tamamlanan Görev: 2</Text></View>
-
             </View>
             <View style={contentStyles.contentView}>
-                <ScrollView horizontal={true}>
+                <ScrollView horizontal={true} bounces={false}>
                     <View>
-                        <Table borderStyle={{ borderWidth: 1, borderColor: '#C1C0B9' }}>
-                            <Row data={state.tableHead} widthArr={state.widthArr} style={styles.header} textStyle={styles.text} />
+                        <Table borderStyle={{ borderWidth: 0.5, borderColor: 'black' }}>
+                            <Row data={state.tableHead} widthArr={state.widthArr} style={styles.header} textStyle={styles.headerText} />
                         </Table>
                         <ScrollView style={styles.dataWrapper}>
-                            <Table borderStyle={{ borderWidth: 1, borderColor: '#C1C0B9' }}>
+                            <Table borderStyle={{ borderWidth: 0.4, borderColor: 'black' }}>
                                 {
                                     tableData.map((rowData, index) => (
                                         <Row
@@ -182,6 +181,7 @@ const styles = StyleSheet.create({
         borderRadius: 15
     },
     header: { height: 50, backgroundColor: '#537791' },
+    headerText: { textAlign: 'center', fontWeight: 'bold' },
     text: { textAlign: 'center', fontWeight: '100' },
     dataWrapper: { marginTop: -1 },
     row: { height: 40, backgroundColor: '#E7E6E1' }
@@ -221,7 +221,7 @@ const headerStyles = StyleSheet.create({
     },
     headerViewCellsHeader: {
         backgroundColor: "lime",
-        height: "25%",
+        height: "35%",
         borderTopLeftRadius: 7,
         borderTopRightRadius: 7,
         alignItems: "center",
@@ -247,7 +247,7 @@ const headerStyles = StyleSheet.create({
 });
 const contentStyles = StyleSheet.create({
     contentView: {
-        backgroundColor: 'blue',
+        backgroundColor: 'white',
         width: "100%",
         height: "60%"
     },

@@ -51,8 +51,36 @@ export default function MainScreen({ navigation }) {
 
                     <Pressable style={headerStyle.headerViewView} onPress={sendNavigation}>
                         <View style={contentStyle.contentViewCellsHeader}>
-                            <Text style={contentStyle.contentViewCellsHeaderText}>Seçenek 1</Text>
+                            <Text style={contentStyle.contentViewCellsHeaderText}>ScoreBoard</Text>
                         </View>
+                        <Grid>
+                            <Row style={{ backgroundColor: "black" }}>
+                                <Col style={{ backgroundColor: "pink", justifyContent: "center" }}>
+                                    <Text style={{ textAlign: "center" }}>#</Text>
+                                </Col>
+                                <Col style={{ backgroundColor: "coral", justifyContent: "center" }}>
+                                    <Text style={{ textAlign: "center" }}>Tüm Katılımcılar</Text>
+                                </Col>
+                                <Col style={{ backgroundColor: "aquamarine", justifyContent: "center" }}>
+                                    <Text style={{ textAlign: "center" }}>Sen Nerdesin?</Text>
+                                </Col>
+                            </Row>
+                            <Row style={{ backgroundColor: "gray" }}>
+                                <Col style={{ backgroundColor: "darkgreen" }}></Col>
+                                <Col style={{ backgroundColor: "darkorchid" }}></Col>
+                                <Col style={{ backgroundColor: "darkslateblue" }}></Col>
+                            </Row>
+                            <Row style={{ backgroundColor: "brown" }}>
+                                <Col style={{ backgroundColor: "darksalmon" }}></Col>
+                                <Col style={{ backgroundColor: "gold" }}></Col>
+                                <Col style={{ backgroundColor: "orangered" }}></Col>
+                            </Row>
+                            <Row style={{ backgroundColor: "gray" }}>
+                                <Col style={{ backgroundColor: "darkgreen" }}></Col>
+                                <Col style={{ backgroundColor: "darkorchid" }}></Col>
+                                <Col style={{ backgroundColor: "darkslateblue" }}></Col>
+                            </Row>
+                        </Grid>
                     </Pressable>
                 </View>
                 <View style={contentStyle.contentView1}>
